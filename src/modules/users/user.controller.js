@@ -4,13 +4,13 @@ import { userService } from "./user.service.js";
 import { logger } from "../../common/utils/logger.js";
 
 class UserController {
-    async getAll(req = request, res = response){
-        try{
-            res.send ("Get all users");
-        }
-        catch(error){
-            logger.error(error);
-        }
+    async getAll(req = request, res = response, next) {
+      try {
+        const users = await userService.getAll();
+        res.status(200).json(users);
+      } catch (error) {
+        next(error);
+      }
     }
 
     async createUsersMocks(req = request, res = response) {

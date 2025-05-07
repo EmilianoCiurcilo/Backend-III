@@ -1,0 +1,38 @@
+paths:
+  /api/users:
+    get:
+      summary: Get all users
+      tags:
+        - Users
+      responses:
+        200:
+          application/json:
+            schema:
+              type: array
+              $ref: "#/components/schemas/User"
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: User ID
+          example: 5f7e9f9b5f7e9f9b5f7e9f9b
+        name:
+          type: string
+          description: User name
+          example: John Doe
+        email:
+          type: string
+          description: User email
+          example: JohnDoe@gmail.com
+        password:
+          type: string
+          description: User password
+          example: 12345678
+        role:
+          type: string
+          description: User role (admin, user, etc.)
+          example: user

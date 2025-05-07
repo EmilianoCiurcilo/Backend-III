@@ -2,17 +2,21 @@ import { generateUsersMocks } from "../../mock/user.mock.js";
 import { userDao } from "./user.dao.js";
 
 class UserService {
-    async createUsersMocks(amount){
-        const users = generateUsersMocks(amount);
+  async createUsersMocks(amount){
+      const users = generateUsersMocks(amount);
 
-        await userDao.removeAll();
+      await userDao.removeAll();
 
-        for( const user of users) {
-          await userDao.create(user);
-        }
+      for( const user of users) {
+        await userDao.create(user);
+      }
 
-        return users;
-    }
+      return users;
+  }
+
+  async getAll(){
+    return await userDao.getAll();
+  }
 }
 
 export const userService = new UserService();

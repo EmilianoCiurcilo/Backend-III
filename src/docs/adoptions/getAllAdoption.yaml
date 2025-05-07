@@ -1,0 +1,12 @@
+paths:
+  /api/adoptions:
+    get:
+      summary: Get all Adoptions
+      tags:
+        - Adoptions
+      responses:
+        200:
+          application/json:
+            schema:
+              type: array
+              $ref: "#/components/schemas/Adoptions"

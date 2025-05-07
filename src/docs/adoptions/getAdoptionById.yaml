@@ -1,0 +1,44 @@
+paths:
+  /api/adoptions/{id}:
+    get:
+      summary: Get adoption by ID
+      tags:
+        - Adoptions
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: ObjectId
+            example: 5f7e9f9b5f7e9f9b5f7e9f9b
+          description: Adoption ID
+      responses:
+        200:
+          description: Adoption found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Adoptions"
+        404:
+          description: Adoption not found
+
+components:
+  schemas:
+    Adoptions:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: Adoption ID
+          example: 5f7e9f9b5f7e9f9b5f7e9f9b
+        owner:
+          type: string
+          format: ObjectId
+          description: Owner ID
+          example: 5f7e9f9b5f7e9f9b5f7e9f9b
+        pet:
+          type: string
+          format: ObjectId
+          description: Pet ID
+          example: 5f7e9f9b5f7e9f9b5f7e9f9b

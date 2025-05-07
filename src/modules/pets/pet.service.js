@@ -5,7 +5,7 @@ import { petDao } from "./pet.dao.js";
 class PetService{
   async create(data){
 
-    throw new NotFoundError();
+    return await petDao.create(data);
   }
 
   async getOne(query) {
@@ -23,6 +23,19 @@ class PetService{
     }
 
     return pets;
+  }
+
+  async updatePet(id, data){
+    const pet = await petDao.getOne({_id: id});
+    if(!pet) throw new NotFoundError("Pet not found");
+    return await petDao.update(id, data);
+  }
+
+  async deletePet(id){
+    const pet = await petDao.getOne({_id: id});
+    if(!pet) throw new NotFoundError("Pet not found");
+
+    return await petDao.remove(id);
   }
 
 }

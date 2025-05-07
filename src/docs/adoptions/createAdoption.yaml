@@ -1,0 +1,51 @@
+paths:
+  /api/adoptions:
+    post:
+      summary: Create new Adoption
+      tags:
+        - Adoptions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - owner
+                - pet
+              properties:
+                owner:
+                  type: string
+                  format: ObjectId
+                  description: Owner ID
+                pet:
+                  type: string
+                  format: ObjectId
+                  description: Pet ID
+      responses:
+        201:
+          description: Pet Adoption created successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Adoptions"
+
+components:
+  schemas:
+    Adoptions:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: Adoption ID
+          example: 5f7e9f9b5f7e9f9b5f7e9f9b
+        owner:
+          type: string
+          format: ObjectId
+          description: Owner ID
+          example: 5f7e9f9b5f7e9f9b5f7e9f9b
+        pet:
+          type: string
+          format: ObjectId
+          description: Pet ID
+          example: 5f7e9f9b5f7e9f9b5f7e9f9b

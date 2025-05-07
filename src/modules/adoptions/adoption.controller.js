@@ -11,6 +11,7 @@ class AdoptionController{
             next(error);
         }
     }
+
     async getAdoption(req = request, res = response, next) {
         try {
             const { id } = req.params;
@@ -20,6 +21,7 @@ class AdoptionController{
             next(error);
         }
     }
+
     async createAdoption(req = request, res = response, next) {
         try {
             const { owner, pet } = req.body;
