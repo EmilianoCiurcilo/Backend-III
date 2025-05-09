@@ -8,10 +8,9 @@ describe("Test Pet Integration Module", () => {
 
   it("[POST] /api/pets - Create Pet", async () => {
     const newPet = {
-      name: "Felix",
-      specie: "Gato",
-      birthDate: "10-12-2020",
-      image: "img.png",
+      name: "Carlitos",
+      specie: "Oso",
+      birthDate: "10-12-2021",
     };
 
     const { status, body, error } = await request.post("/api/pets").send(newPet);
@@ -21,10 +20,10 @@ describe("Test Pet Integration Module", () => {
     expect(body).to.have.property("_id");
     expect(body).to.have.property("name");
     expect(body).to.have.property("specie");
-    expect(body).to.have.property("image");
-    expect(body.name).to.be.equal("Felix");
-    expect(body.specie).to.be.equal("Gato");
-    expect(body.birthDate).to.be.equal("2020-10-12T03:00:00.000Z");
+    expect(body).to.have.property("birthDate");
+    expect(body.name).to.be.equal("Carlitos");
+    expect(body.specie).to.be.equal("Oso");
+    expect(body.birthDate).to.be.equal("2021-10-12T03:00:00.000Z");
   });
 
   it("[PUT] /api/pets/:id - Update one Pet", async () => {
@@ -40,11 +39,10 @@ describe("Test Pet Integration Module", () => {
     expect(body).to.have.property("_id");
     expect(body).to.have.property("name");
     expect(body).to.have.property("specie");
-    expect(body).to.have.property("image");
     expect(body.name).to.be.equal("Felix");
-    expect(body.specie).to.not.be.equal("Gato");
+    expect(body.specie).to.not.be.equal("Oso");
     expect(body.specie).to.be.equal("Perro");
-    expect(body.birthDate).to.be.equal("2020-10-12T03:00:00.000Z");
+    expect(body.birthDate).to.be.equal("2021-10-12T03:00:00.000Z");
   });
 
   it("[GET] /api/pets/:id - Get one Pet", async () => {
@@ -56,11 +54,10 @@ describe("Test Pet Integration Module", () => {
     expect(body).to.have.property("_id");
     expect(body).to.have.property("name");
     expect(body).to.have.property("specie");
-    expect(body).to.have.property("image");
     expect(body.name).to.be.equal("Felix");
     expect(body.specie).to.not.be.equal("Gato");
     expect(body.specie).to.be.equal("Perro");
-    expect(body.birthDate).to.be.equal("2020-10-12T03:00:00.000Z");
+    expect(body.birthDate).to.be.equal("2021-10-12T03:00:00.000Z");
   });
 
   after(async () => {

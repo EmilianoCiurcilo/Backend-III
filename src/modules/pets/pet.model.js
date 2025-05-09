@@ -9,7 +9,7 @@ const petSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    birthdate: Date,
+    birthDate: Date,
     adopted:{
         type: Boolean,
         default: false,

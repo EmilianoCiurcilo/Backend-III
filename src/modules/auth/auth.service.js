@@ -19,7 +19,7 @@ class AuthService {
   }
 
   async login(email, password) {
-    logger.debug("Iniciando login en el servicio");
+    logger.debug("Login user");
     const findUser = await userDao.getOne({ email });
     if (!findUser || !isValidPassword(findUser, password)) throw new UnauthorizedError("Invalid email or password");
 
